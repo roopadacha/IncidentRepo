@@ -1,0 +1,55 @@
+<h1>{{actionType}} Incident</h1>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+  
+  <div class="form-group row">
+          <label class=" control-label col-md-12">Incident Type</label>
+          <div class="col-md-12">
+              <select formControlName="incidentType" style="width: 20%;">
+                  <option [ngValue]="0">Select Type</option>
+                  <option *ngFor="let incidentType of (incidentTypes$ | async)" [ngValue]="incidentType.id">
+                    {{incidentType.name}}
+                  </option>
+                </select>
+          </div>          
+        </div>
+      
+  <div class="form-group row">
+      <label class=" control-label col-md-12">Incident Date</label>
+      <div class="col-md-12">
+        <mat-form-field style="width: 20%;">
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="incidentDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        </div>
+       
+    </div>
+    <div>
+      
+      <mat-form-field class="mat-input-container" floatLabel="auto" style="width: 20%;">
+       
+        <input matInput  placeholder="Incident Time" formControlName="incidentTime" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2">
+<owl-date-time [pickerType]="'timer'" #dt2></owl-date-time>
+
+   </mat-form-field>
+ </div>
+ <div class="form-group row">
+  <label class="control-label col-md-12" for="Body">Description</label>
+  <div class="col-md-12">
+    <textarea class="form-control" rows="5" formControlName="description"></textarea>
+  </div>
+  <span class="text-danger ml-3" *ngIf="description.invalid && formDir.submitted">
+    Description is required.
+  </span>
+</div>
+<div class="form-group row">
+  <label class=" control-label col-md-12">Person</label>
+  <div class="col-md-12">
+    <input class="form-control" type="text" formControlName="person">
+  </div>  
+</div>
+  <div class="form-group">   
+      <button type="submit" class="btn btn-success  float-left">Save</button>
+      <button class="btn btn-secondary" (click)="cancel()">Cancel</button>
+  </div>
+</form>

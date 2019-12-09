@@ -1,0 +1,31 @@
+<h1>List of Incidents</h1>
+
+<p *ngIf="!(incidents$ | async)"><em>Loading...</em></p>
+<p>
+  <a [routerLink]="['/add']" class="btn btn-primary float-right mb-3">New Incident</a>
+</p>
+
+<table class="table table-sm table-hover" *ngIf="(incidents$ | async)?.length>0">
+  <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Description</th>
+      <th>Person Involved</th>
+      <th>Incident Type</th>
+      <th>Incident Date</th>
+      <th>Incident Time</th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let incident of (incidents$ | async);let i = index">
+      <td>{{ i+1 }}</td>
+      <td><a [routerLink]="['/incident/', incident.id]">{{ incident.description }}</a></td>
+      <td>{{ incident.person }}</td>
+      <td>{{ incident.incidentType.name }}</td>
+      <td>{{ incident.incidentDate | date }}</td>
+      <td>{{ incident.incidentTime | date: 'shortTime' }}</td>
+      <td><a [routerLink]="['/incident/edit/', incident.id]" class="btn btn-primary btn-sm float-right">Edit</a></td>
+      <td><a [routerLink]="" (click)="delete(incident.id)" class="btn btn-danger btn-sm float-right">Delete</a></td>
+    </tr>
+  </tbody>
+</table>

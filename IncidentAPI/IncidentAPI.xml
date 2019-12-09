@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IncidentAPI</name>
+    </assembly>
+    <members>
+        <member name="M:IncidentAPI.Controllers.IncidentController.Get">
+            <summary>
+            Gets the List of Incidents.
+            </summary>
+            <returns>List of Incidents</returns>
+        </member>
+        <member name="M:IncidentAPI.Controllers.IncidentController.GetById(System.Int32)">
+            <summary>
+            Get the Incident by Id.
+            </summary>
+            <param name="id"></param>
+            <returns>Incident</returns>
+        </member>
+        <member name="M:IncidentAPI.Controllers.IncidentController.Post(DomainDto.IncidentDto)">
+            <summary>
+            Creates an Incident.
+            </summary>
+            <param name="incidentDto"></param>
+            <returns>Incident</returns>
+        </member>
+        <member name="M:IncidentAPI.Controllers.IncidentController.Put(System.Int32,DomainDto.IncidentDto)">
+            <summary>
+            Updates an Incident.
+            </summary>
+            <param name="id"></param>
+            <param name="incident"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IncidentAPI.Controllers.IncidentController.Delete(System.Int32)">
+            <summary>
+            Deletes a specific Incident.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
